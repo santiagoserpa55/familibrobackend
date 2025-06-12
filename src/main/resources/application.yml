@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: familibro
+server:
+ port: 8082
+
+datasource:
+  customs:
+    query-timeout: 20
+  my-connection:
+    jdbc-url: jdbc:postgresql://dpg-d150d3ffte5s738llpjg-a.oregon-postgres.render.com:5432/familibroappdb
+    username: familibroappdb_user
+    password: Sh3fwzU4Oz4LO3IvCX3V7pDKYoRMWbDW
+    maximum-pool-size: 10
+    pool-name: "crud-pool"
+    auto-commit: true
