@@ -11,7 +11,7 @@ import com.epsfamiliar.familibro.service.DataService;
 
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://familibroapp.vercel.app")
 @RestController
 public class DataController {
 
