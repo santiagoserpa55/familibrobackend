@@ -12,6 +12,7 @@ import com.epsfamiliar.familibro.service.DataService;
 
 
 @CrossOrigin(origins = "https://familibroapp.vercel.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class DataController {
 
@@ -21,7 +22,7 @@ public class DataController {
 		this.dataService = controlador;
 	}
 
-	@GetMapping("/contratos")
+	@GetMapping("/tecnologias")
 	public List<DataModel> getContratos() {
 		return dataService.getAllContratos();
 	}
