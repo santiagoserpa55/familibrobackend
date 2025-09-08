@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.epsfamiliar.familibro.model.MedicamentosModel;
 import com.epsfamiliar.familibro.service.MedicamentosService;
 
-@CrossOrigin(origins = "https://familibroapp.vercel.app")
-//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://familibroapp.vercel.app")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MedicamentosController {
 	private MedicamentosService medicamentosService;

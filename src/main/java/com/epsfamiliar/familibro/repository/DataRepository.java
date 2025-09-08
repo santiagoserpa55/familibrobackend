@@ -2,7 +2,9 @@ package com.epsfamiliar.familibro.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -26,14 +28,26 @@ public class DataRepository {
 		this.jdbcTemplate = namedParameterJdbcTemplate;
 	}
 
-	public List<DataModel> getContratos() {
-		String getQuery = "SELECT nit, razon_social, numero_contrato, estado, departamento, tipo_contrato,"
-				+ "codigo_tarifa, codigo_propio, descripcion_tarifa, valor FROM public.contratos";
+	public List<DataModel> getContratos(int page, int size) {
+	    int offset = page * size;
+		String sql = "SELECT nit, razon_social,"
+				+ "numero_contrato, estado, departamento, tipo_contrato,"
+				+ "codigo_tarifa, codigo_propio, descripcion_tarifa,"
+				+ "valor FROM public.contratos ORDER BY nit LIMIT :size OFFSET :offset";
 		/*
 		 * debemos mapear los campos que estan en la base de datos para que existan en
 		 * java, usamos un mapper
 		 */
-		return jdbcTemplate.query(getQuery, mapper);
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("size", size);
+	    params.put("offset", offset);
+	    return jdbcTemplate.query(sql, params, mapper);
+	}
+	
+	public int countContratos() {
+	    String sql = "SELECT COUNT(*) FROM public.contratos";
+	    Integer count = jdbcTemplate.queryForObject(sql, Map.of(), Integer.class);
+	    return count != null ? count : 0;
 	}
 
 	private static class DataMapper implements RowMapper<DataModel> {
