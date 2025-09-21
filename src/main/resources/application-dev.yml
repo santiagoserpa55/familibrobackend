@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: familibro
+server:
+ port: 8082
+app:
+  cors:
+    allowed-origins: "http://localhost:4200"
+    allowed-methods: "*"
+    allowed-headers: "*"
+    exposed-headers: "*"
+
+datasource:
+  customs:
+    query-timeout: 20
+  my-connection:
+    jdbc-url: jdbc:postgresql://localhost:5432/familibro
+    username: santiagoserpa55
+    password: kaliet2017
+    maximum-pool-size: 10
+    pool-name: "crud-pool"
+    auto-commit: true
